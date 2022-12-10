@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import "./SubForm.css";
 
 export default function DietForm(props) {
+  const [formData, setFormData] = useState({
+    dietForm: "nodiet",
+  });
   const preventFunc = (e) => e.preventDefault();
 
-  const handleRadio = () => {};
+  const handleRadio = (e) => {
+    setFormData({
+      dietForm: e.target.value,
+    });
+  };
 
   return (
     <form className="diet-form" onSubmit={preventFunc}>
@@ -41,7 +48,7 @@ export default function DietForm(props) {
         id="vegan"
         value="vegan"
       />
-      <button onClick={() => props.modifyIndex(3)}>Valider</button>
+      <button onClick={() => props.modifyIndex(3, formData)}>Valider</button>
     </form>
   );
 }

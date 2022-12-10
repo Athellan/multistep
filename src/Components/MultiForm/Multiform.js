@@ -15,8 +15,16 @@ export default function Multiform() {
     prefs: {},
   });
 
-  const modifyIndex = (index) => {
+  const modifyIndex = (index, data) => {
     setFormIndex(index);
+
+    if (data) {
+      const newData = { ...allFormData };
+      const firstPropNewData = Object.keys(data)[0];
+
+      newData[firstPropNewData] = data[firstPropNewData];
+      setAllFormData(newData);
+    }
   };
 
   return (
